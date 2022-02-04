@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width">
+        <title>Basic input types</title>
+        <link rel="stylesheet" href="../css/HTMLForm_CSS.css">
+    </head>
+    <body>
+        <form>
+            <header class="headerContainer"><h1>HTML 5 Form Input Fields</h1></header>
+            <div>
+                <label for="text">text input type for Name: </label>
+                <input type ="text" id="text" name="text">
+                <error-output class ="text-error" for="text"></error-output>
+            </div>
+            <div>
+                <label for="pwd"> password input type:</label>
+                <input type="password" id="pwd" name="pwd">
+            </div>
+            <div>
+                <label for="email">email input type:</label>
+                <input type="email" id="email" name="email">
+            </div>
+            <div>
+                <label for="url">url input type:</label>
+                <input type="url" id="url" name="url">
+            </div>
+            <div>
+                <label for="number">number input type:</label>
+                <input type="number" id="number" name="number">
+            </div>
+            <div>
+                <label for="tel"> tel input type:</label>
+                <input type="tel" id="tel" name="tel">
+            </div>
+            <div>
+                <label or="search">search input type:</label>
+                <input type="search" id="search" name="search">
+            </div>
+            <div class="nativeDateTimePicker">
+                <label for="party">choose a date and time</label>
+                <input type="datetime-local" id="party" name="bday">
+                <span class="validaty"></span>
+            </div>
+            <div>
+                <label for="salary">choose your salary</label>
+                <input type="range" name="salary" id="salary" min="300000"
+                        max="500000" step="100" value="400000">
+                <output class="salary-output" for="salary">400000</output>    
+            </div>
+            <div>
+                <button>Submit</button>
+            </div>
+        </form>
+            <script>
+                const text=document.querySelector('#text');
+                const textError = document.querySelector('.text-error');
+                text.addEventListener('input',function() {
+                    let nameRegex =RegExp('^[A-Z]{1}[a-z]{2,}$');
+                     if (nameRegex.test(text,value))
+                        texteError.textContent ="";
+                    else textError.textContent = "Name is Incorrect";
+                });
+
+                const salary = document.querySelector('#salary');
+                const output = document.querySelector('.salary-output');
+                output.textContent = salary.value;
+                salary.addEventListener('input',function(){
+                    output.textContent = salary.value;
+                })
+
+                const email=document.querySelector('#email');
+                const emailError = document.querySelector('.email-error');
+                email.addEventListener('input',function(){
+                    let emailRegex =RegExp('abc.xyz@bl.co.in');
+                    if (nameRegex.test(email,value))
+                        emailError.emailContent ="";
+                    else emailError.emailContent = "email is Incorrect";
+                })
+
+                const number=document.querySelector('#number');
+                const numberError = document.querySelector('.number-error');
+                number.addEventListener('input',function(){
+                    let numberRegex =RegExp('91 9919819801');
+                    if (numberRegex.test(number,value))
+                        numberError.numberContent ="";
+                    else numberError.numberContent = "number is Incorrect";
+                })
+
+                const password=document.querySelector('#password');
+                const passwordError = document.querySelector('.password-error');
+                password.addEventListener('input',function(){
+                    let passwordRegex =RegExp('(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*()_-])[a-zA-Z0-9].{8,}$');
+                    if (passwordRegex.test(password,value))
+                        passwordError.passwordContent ="";
+                    else passwordError.passwordContent = "password is Incorrect";
+                })
+                
+
+            </script>
+    </body>
+</html>
